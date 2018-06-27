@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Colors</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+      <ion-col *ngFor="let card of cards" col-6>
+        <ion-card>
+          <img [src]="card.image"/>
+          <div class="card-title">{{ card.title }}</div>
+          <div class="card-subtitle">{{ card.subtitle }}</div>
+        </ion-card>     
+      </ion-col>
+  </ion-row>
+</ion-content>
