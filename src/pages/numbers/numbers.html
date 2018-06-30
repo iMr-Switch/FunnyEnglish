@@ -10,10 +10,8 @@
 <ion-content padding>
   <ion-row>
       <ion-col *ngFor="let card of cards" col-6>
-        <ion-card>
+        <ion-card (click)="play(card.sound)">
           <img [src]="card.image"/>
-          <div class="card-title">{{ card.title }}</div>
-          <div class="card-subtitle">{{ card.subtitle }}</div>
         </ion-card>     
       </ion-col>
   </ion-row>

@@ -2,8 +2,6 @@
 
   <ion-card *ngFor="let card of cards" (click)="openPagenAndPlay(card.sound)">
     <img [src]="card.image"/>
-    <div class="card-title">{{ card.title }}</div>
-    <div class="card-subtitle">{{ card.subtitle }}</div>
   </ion-card>
 
 </ion-content>

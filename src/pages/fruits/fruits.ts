@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 @IonicPage({
   name: 'fruits'
@@ -11,19 +12,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FruitsPage {
   cards: any = [
-    { title: "Apple", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-saopaolo.png", sound: "fruits" },
-    { title: "Pineaple", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "numbers" },
-    { title: "Grapes", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-sf.png", sound: "colors" },
-    { title: "Cherry", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-madison.png", sound: "animals" },
-    { title: "Banana", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
-    { title: "Strawberry", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
-
+    { title: "Apple", image: "assets/imgs/fruits/apple.png", sound: "apple" },
+    { title: "Pineaple", image: "assets/imgs/fruits/pineapple.png", sound: "pineapple" },
+    { title: "Grapes", image: "assets/imgs/fruits/grapes.png", sound: "grapes" },
+    { title: "Cherry", image: "assets/imgs/fruits/cherry.png", sound: "cherry" },
+    { title: "Banana", image: "assets/imgs/fruits/banana.png", sound: "banana" },
+    { title: "Strawberry", image: "assets/imgs/fruits/strawberry.png", sound: "strawberry" },
   ];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FruitsPage');
-  }
+  ionViewWillEnter() {
+    this.nativeAudio.preloadSimple('apple', 'assets/audio/apple.mp3');
+    this.nativeAudio.preloadSimple('pineapple', 'assets/audio/pineapple.mp3');
+    this.nativeAudio.preloadSimple('grapes', 'assets/audio/grapes.mp3');
+    this.nativeAudio.preloadSimple('cherry', 'assets/audio/cherry.mp3');
+    this.nativeAudio.preloadSimple('banana', 'assets/audio/banana.mp3');
+    this.nativeAudio.preloadSimple('strawberry', 'assets/audio/strawberry.mp3');
 
+  }
+  play(audio) {
+    this.nativeAudio.play(audio);
+  }
 }

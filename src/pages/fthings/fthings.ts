@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { NativeAudio } from '@ionic-native/native-audio';
 @IonicPage({
   name: 'fthings'
 })
@@ -11,23 +11,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FthingsPage {
   cards: any = [
-    { title: "Unicorn", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-saopaolo.png", sound: "fruits" },
-    { title: "Rainbow", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "numbers" },
-    { title: "Cupcake", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-sf.png", sound: "colors" },
-    { title: "Ghost", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-madison.png", sound: "animals" },
-    { title: "Flowers", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
-    { title: "Dinosaur", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
-    { title: "Panda", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
-    { title: "Clouds", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
-    { title: "Ice Cream", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
-    { title: "Cookies", image: "https://ionicframework.com/dist/preview-app/www/assets/img/card-amsterdam.png", sound: "fthings" },
+    { title: "Rainbow", image: "assets/imgs/fthings/rainbow.jpg", sound: "rainbow" },
+    { title: "Cupcake", image: "assets/imgs/fthings/cupcake.jpg", sound: "cupcake" },
+    { title: "Ghost", image: "assets/imgs/fthings/ghost.jpg", sound: "ghost" },
+    { title: "Flowers", image: "assets/imgs/fthings/flowers.jpg", sound: "flowers" },
+    { title: "Panda", image: "assets/imgs/fthings/panda.jpg", sound: "panda" },
+    { title: "Clouds", image: "assets/imgs/fthings/cloud.jpg", sound: "cloud" },
+    { title: "Ice Cream", image: "assets/imgs/fthings/icecream.jpg", sound: "icecream" },
+    { title: "Cookies", image: "assets/imgs/fthings/cookies.jpg", sound: "cookies" },
 
   ];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FruitsPage');
+  ionViewWillEnter() {
+    this.nativeAudio.preloadSimple('rainbow', 'assets/audio/rainbow.mp3');
+    this.nativeAudio.preloadSimple('cupcake', 'assets/audio/cupcake.mp3');
+    this.nativeAudio.preloadSimple('ghost', 'assets/audio/ghost.mp3');
+    this.nativeAudio.preloadSimple('flowers', 'assets/audio/flowers.mp3');
+    this.nativeAudio.preloadSimple('panda', 'assets/audio/panda.mp3');
+    this.nativeAudio.preloadSimple('cloud', 'assets/audio/cloud.mp3');
+    this.nativeAudio.preloadSimple('icecream', 'assets/audio/icecream.mp3');
+    this.nativeAudio.preloadSimple('cookies', 'assets/audio/cookies.mp3');
+
+  }
+ 
+  play(audio) {
+    this.nativeAudio.play(audio);
   }
 
 }
